@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   PARALLEL CAFE — DESIGN SYSTEM TOKENS
+   Exact hex values from build prompt §3.1 — DO NOT ALTER
+   ============================================================ */
+
+:root {
+  /* ---- Global brand chrome ---- */
+  --brand-ink: #2f3e36;
+  --brand-cream: #FAF7F2;
+  --brand-white: #FFFFFF;
+  --brand-text-dark: #1A1F1C;
+
+  /* ---- Default section theme (cafe) ---- */
+  --section-primary: #2f3e36;
+  --section-accent: #74bd58;
+  --section-surface: #d3fbd8;
+  --section-highlight: transparent;
+}
+
+/* ---- Cafe theme ---- */
+[data-theme="cafe"] {
+  --section-primary: #2f3e36;
+  --section-accent: #74bd58;
+  --section-surface: #d3fbd8;
+  --section-highlight: transparent;
+}
+
+/* ---- Private Screening theme ---- */
+[data-theme="screening"] {
+  --section-primary: #b76e79;
+  --section-accent: #9c6880;
+  --section-surface: #ebdfe4;
+  --section-highlight: transparent;
+}
+
+/* ---- Gaming theme ---- */
+[data-theme="gaming"] {
+  --section-primary: #00aab7;
+  --section-accent: #7df9ff;
+  --section-surface: #e1ffff;
+  --section-highlight: #fcfcd4;
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-body text-brand-text-dark bg-brand-cream;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold tracking-tight;
+  }
+
+  /* Fluid heading defaults */
+  h1 { @apply text-fluid-4xl; }
+  h2 { @apply text-fluid-3xl; }
+  h3 { @apply text-fluid-2xl; }
+  h4 { @apply text-fluid-xl; }
+
+  /* Focus visible ring for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-section-primary;
+    outline-style: solid;
+  }
+}
+
+/* ============================================================
+   COMPONENT UTILITIES
+   ============================================================ */
+
+@layer components {
+  /* Indian standard veg indicator */
+  .veg-indicator {
+    @apply inline-flex items-center justify-center w-4 h-4 border border-green-600 rounded-sm;
+  }
+  .veg-indicator::after {
+    content: '';
+    @apply block w-2 h-2 bg-green-600 rounded-full;
+  }
+
+  /* Sticky category bar scrollbar hiding */
+  .scroll-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Content max-width capping for large screens */
+  .content-cap {
+    @apply max-w-site mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Glass card effect for premium feel */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20;
+  }
+
+  /* Section hero gradient overlay */
+  .hero-gradient {
+    background: linear-gradient(
+      to bottom,
+      rgba(47, 62, 54, 0.85) 0%,
+      rgba(47, 62, 54, 0.6) 50%,
+      rgba(47, 62, 54, 0.9) 100%
+    );
+  }
+
+  /* Screening hero gradient */
+  .hero-gradient-screening {
+    background: linear-gradient(
+      to bottom,
+      rgba(183, 110, 121, 0.85) 0%,
+      rgba(156, 104, 128, 0.6) 50%,
+      rgba(183, 110, 121, 0.9) 100%
+    );
+  }
+
+  /* Gaming hero gradient — dark base for neon contrast */
+  .hero-gradient-gaming {
+    background: linear-gradient(
+      to bottom,
+      rgba(10, 15, 20, 0.9) 0%,
+      rgba(0, 170, 183, 0.15) 50%,
+      rgba(10, 15, 20, 0.95) 100%
+    );
+  }
+}
+
+/* ============================================================
+   ANIMATIONS — respect prefers-reduced-motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Subtle entrance animation for cards */
+.animate-card-enter {
+  animation: fade-in 0.5s ease-out both;
+}
+
+/* Staggered animation delays for grids */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+
+/* Neon glow text effect for gaming section */
+.neon-glow {
+  text-shadow: 
+    0 0 7px var(--section-accent),
+    0 0 10px var(--section-accent),
+    0 0 21px var(--section-accent);
+}
+
+/* Neon border glow for gaming cards */
+.neon-border-glow {
+  box-shadow: 
+    0 0 5px var(--section-accent),
+    inset 0 0 5px rgba(125, 249, 255, 0.1);
+}
+
+/* ============================================================
+   SCROLLBAR STYLING
+   ============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-brand-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(47, 62, 54, 0.3); /* brand-ink at 30% opacity */
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(47, 62, 54, 0.5); /* brand-ink at 50% opacity */
+}
+
+/* ============================================================
+   CUSTOM UTILITIES
+   ============================================================ */
+
+/* Price display with rupee symbol */
+.price::before {
+  content: '₹';
+}
+
+/* Shimmer loading skeleton */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--brand-cream) 25%,
+    #e8e5e0 37%,
+    var(--brand-cream) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}

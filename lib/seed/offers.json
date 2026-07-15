@@ -1,0 +1,32 @@
+{
+  "startingFrom99": {
+    "price": 99,
+    "items": ["Maggie", "Sandwiches", "Korean Buns", "Walnut Brownies"]
+  },
+  "flatOffers": [
+    { "id": "fo-1", "title": "Free 1 Hour PS5 Gaming", "condition": "With birthday celebrations" },
+    { "id": "fo-2", "title": "Buy 2 Mocktails, Get 1 Free", "condition": null },
+    { "id": "fo-3", "title": "Buy Any Full Pizza, Get 1 Mocktail Free", "condition": null },
+    { "id": "fo-4", "title": "20% Off Your Bill", "condition": "Make a reel at Parallel Cafe" }
+  ],
+  "weekdayOffers": [
+    { "day": "Tuesday", "item": "Free Korean Bun", "condition": "On bills above ₹500" },
+    { "day": "Wednesday", "item": "Free Cold Coffee", "condition": "On bills above ₹500" },
+    { "day": "Thursday", "item": "Free French Fries", "condition": "On bills above ₹500" },
+    { "day": "Friday", "item": "Free Walnut Brownie", "condition": "On bills above ₹500" }
+  ],
+  "celebrationPackage": {
+    "title": "Grand Celebrations Package",
+    "price": 1999,
+    "originalPrice": 2999,
+    "inclusions": ["Decoration", "1 Full Pizza", "2 Mocktails", "Fries"],
+    "idealFor": ["Birthdays", "Dates", "Proposals", "Celebrations"]
+  },
+  "loyalty": {
+    "title": "Repeat Customers Get 10% Off",
+    "condition": "On every visit — can be clubbed with any other offer"
+  },
+  "social": {
+    "instagram": "@parallel.cafe"
+  }
+}
